@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Laiba 💛</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Base Theme & Typography --- */
+        :root {
+            --bg-white: #ffffff;
+            --gold-light: #fbeea1;
+            --gold-rich: #d4af37;
+            --text-main: #4a4a4a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-white);
+            color: var(--text-main);
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            direction: rtl;
+            color: var(--gold-rich);
+            font-size: 1.5rem;
+            line-height: 2.5;
+            margin: 15px 0;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- Page Navigation Setup --- */
+        .page {
+            display: none;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: relative;
+        }
+        .page.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* --- Global Animations & Elements --- */
+        .btn-gold {
+            background: var(--bg-white);
+            border: 1px solid var(--gold-rich);
+            color: var(--gold-rich);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+        }
+        .btn-gold:hover {
+            background: var(--gold-rich);
+            color: var(--bg-white);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
+        }
+
+        .gold-divider {
+            width: 0;
+            height: 1px;
+            background: var(--gold-rich);
+            margin: 20px auto;
+            animation: drawLine 2s forwards;
+        }
+        @keyframes drawLine {
+            to { width: 60%; }
+        }
+
+        .beating-heart {
+            color: var(--gold-rich);
+            font-size: 2rem;
+            animation: heartbeat 1.5s infinite;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            margin: 10px 0;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* --- 1. Home Page Animations --- */
+        .slide-flowers {
+            position: absolute;
+            left: -100px;
+            top: 20px;
+            font-size: 3rem;
+            opacity: 0;
+            animation: slideIn 3s forwards ease-out;
+            color: var(--gold-light);
+        }
+        @keyframes slideIn {
+            to { left: 20px; opacity: 1; }
+        }
+        .fade-in-text {
+            opacity: 0;
+            animation: fadeIn 3s 1.5s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* --- 2. Envelope Page --- */
+        .envelope-wrapper {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            background: #fdfaf0;
+            border: 1px solid var(--gold-light);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            margin-bottom: 40px;
+        }
+        .envelope-flap {
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 90px solid #f2e2a7;
+            transform-origin: top;
+            transition: transform 1s ease-in-out;
+            z-index: 3;
+        }
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+        .envelope-card {
+            position: absolute;
+            width: 240px;
+            height: 120px;
+            background: var(--bg-white);
+            color: var(--text-main);
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid var(--gold-rich);
+            bottom: 0;
+            transition: bottom 1.5s ease-in-out, opacity 1s;
+            z-index: 2;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+        }
+        .envelope-wrapper.open .envelope-card {
+            bottom: 70px;
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- 3. Valentine Page --- */
+        .valentine-card {
+            background: var(--bg-white);
+            border: 1px solid var(--gold-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        .memory-box {
+            border: 1px solid var(--gold-rich);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            background: #fffdf5;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.05);
+        }
+
+        /* POEM SECTION STYLES */
+        .poem-box {
+            border: 1px solid var(--gold-rich);
+            padding: 40px 20px;
+            margin: 30px 0;
+            border-radius: 12px;
+            background: linear-gradient(180deg, var(--bg-white), #fffcf0);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1);
+            max-width: 600px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        .poem-title {
+            color: var(--gold-rich);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-style: normal;
+            font-weight: 600;
+        }
+        .poem-box p {
+            margin-bottom: 15px;
+        }
+
+        #secret-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed var(--gold-rich);
+            border-radius: 5px;
+            color: var(--gold-rich);
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 1.5s;
+        }
+
+        .tiny-heart {
+            position: fixed;
+            font-size: 24px;
+            color: var(--gold-rich);
+            pointer-events: none;
+            animation: floatUp 1.5s ease-out forwards;
+            z-index: 9999;
+        }
+        @keyframes floatUp {
+            0% { transform: scale(0.5) translate(0, 0); opacity: 1; }
+            100% { transform: scale(1.5) translate(var(--tx), var(--ty)); opacity: 0; }
+        }
+
+        /* Falling Petals */
+        .petal {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, var(--gold-light), #fff);
+            border-radius: 50% 0 50% 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* --- 4. Final Surprise --- */
+        #final-screen {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 10000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .gold-rose {
+            font-size: 5rem;
+            color: var(--gold-rich);
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            transform: scale(0);
+            transition: transform 3s ease-in-out;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="page-home" class="page active">
+        <div class="slide-flowers">💮✨</div>
+        
+        <div class="fade-in-text">
+            <h1 style="color: var(--gold-rich); font-weight: 400;">Laiba... this is for you.</h1>
+            <div class="urdu-text">تمہارا ذکر میری حیات کا سنہرا باب ہے۔</div>
+            <p style="color: #888; font-style: italic;">I have something for you jana.</p>
+            
+            <div class="beating-heart">🤍</div>
+            <div class="gold-divider"></div>
+            
+            <button class="btn-gold" onclick="goToPage('page-envelope')">See what is in my heart for you jana</button>
+        </div>
+    </div>
+
+    <div id="page-envelope" class="page">
+        <div class="envelope-wrapper" onclick="openEnvelope(this)">
+            <div class="envelope-flap"></div>
+            <div class="envelope-card">
+                "For Laiba, the girl who always in my mind."
+            </div>
+        </div>
+        
+        <div style="opacity: 0; transition: opacity 2s;" id="envelope-next-btn">
+            <button class="btn-gold" onclick="goToPage('page-valentine'); startPetals();">Go to Your Valentine Page</button>
+        </div>
+    </div>
+
+    <div id="page-valentine" class="page" style="z-index: 2;">
+        <h1 style="color: var(--gold-rich); font-weight: 400; font-size: 2.5rem;">Happy Valentine’s Day, Laiba</h1>
+        <div class="gold-divider" style="width: 40%;"></div>
+
+        <div class="valentine-card">
+            <p>Laiba, today isn’t just Valentine’s Day…</p>
+            <p>It’s a reminder of how beautiful it feels to have you in my world.</p>
+            <div class="urdu-text">تیرے ہونے سے میری زندگی میں نور ہے</div>
+            <p>You are the warmth in my days,<br>the comfort in my nights,<br>and the glow in everything around me.</p>
+        </div>
+
+        <div class="beating-heart" style="cursor: pointer;" onclick="explodeHearts(event)">🤍</div>
+        <p id="heart-text" style="display:none; color: var(--gold-rich); font-style: italic;">That’s how my heart feels for you.</p>
+
+        <div class="memory-box">
+            <h3 style="color: var(--gold-rich); margin-top: 0; font-weight: 400;">One thing I want to experience with you jana…</h3>
+            <p>"I Love You Mari Jan .Hamasha Kush Raha Kro .I want to see you always happy"</p>
+            <div class="urdu-text" style="font-size: 1.2rem;">ہر لمحہ تمہارے ساتھ میری زندگی کا سب سے خوبصورت لمحہ ہے۔</div>
+        </div>
+
+       <div class="poem-box">
+            <div class="poem-title">🌹 A Promise for You</div>
+            <p>"Laiba, my heart beats only for you. From the first light of morning to the quiet of night, every thought I have is of you.</p>
+            <p>I promise to walk beside you through every calm and every storm, letting your presence be my guide. Your laughter will be my favorite song, and I will be there to lift you whenever the weight of the world presses down.</p>
+            <p>With every pulse of my heart, my love for you grows stronger, deeper, endlessly. Through sunlit days and moonlit nights, I will never let you go.</p>
+            <p>I vow to treasure you, to adore you, and to be the shelter where you always feel safe. No distance, no time, no obstacle can ever dim the radiance you bring to my life.</p>
+            <p style="color: var(--gold-rich); font-weight: 600; margin-top: 25px; font-style: normal;">
+                Laiba, now and forever, you are my everything . Bs Ya Kahon Ga Ap ki Tarif Ma Kya Kahan Ap hamari jan bn gyi"
+            </p>
+        </div>
+
+        <button class="btn-gold" onclick="revealSecret()">Laiba, tap to reveal something for you</button>
+        <div id="secret-message">"Your name is the softest place my heart rests."</div>
+
+        <div style="margin-top: 100px; padding-bottom: 50px;">
+            <p style="color: #aaa; font-style: italic;">Scroll down softly...</p>
+            <div style="height: 50px;"></div>
+            <button class="btn-gold" onclick="showFinalSurprise()">Mara msg smj lyn ya mari taraf sa love letter smj lyn</button>
+        </div>
+    </div>
+
+    <div id="final-screen">
+        <h2 style="color: var(--gold-rich); font-weight: 400; text-align: center; max-width: 600px; padding: 20px;">
+           I Love You Mari Jan Hamasha Kush Raho .Inshallah We will be together Soon
+        </h2>
+        <div class="urdu-text" style="font-size: 2rem;">تم وہ خوشی ہو جو دل نے ہمیشہ چاہی تھی۔</div>
+        <div class="gold-rose" id="rose">🌹</div>
+    </div>
+
+    <script>
+        function goToPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            setTimeout(() => {
+                document.getElementById(pageId).classList.add('active');
+                window.scrollTo(0, 0);
+            }, 300); 
+        }
+
+        function openEnvelope(element) {
+            element.classList.add('open');
+            setTimeout(() => {
+                document.getElementById('envelope-next-btn').style.opacity = '1';
+            }, 1500); 
+        }
+
+        function revealSecret() {
+            const secretBox = document.getElementById('secret-message');
+            secretBox.style.display = 'block';
+            setTimeout(() => {
+                secretBox.style.opacity = '1';
+            }, 50);
+        }
+
+        function explodeHearts(e) {
+            document.getElementById('heart-text').style.display = 'block';
+            
+            for(let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '✨'; 
+                if(i % 2 === 0) heart.innerHTML = '🤍';
+                
+                heart.className = 'tiny-heart';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                
+                let tx = (Math.random() - 0.5) * 300 + 'px';
+                let ty = (Math.random() - 0.5) * 300 - 100 + 'px';
+                heart.style.setProperty('--tx', tx);
+                heart.style.setProperty('--ty', ty);
+                
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 1500);
+            }
+        }
+
+        function startPetals() {
+            setInterval(() => {
+                let petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.top = '-20px';
+                petal.style.animationDuration = Math.random() * 4 + 5 + 's'; 
+                document.body.appendChild(petal);
+                setTimeout(() => { petal.remove(); }, 9000);
+            }, 800);
+        }
+
+        function showFinalSurprise() {
+            let screen = document.getElementById('final-screen');
+            let rose = document.getElementById('rose');
+            
+            screen.style.display = 'flex';
+            setTimeout(() => { 
+                screen.style.opacity = '1'; 
+                setTimeout(() => {
+                    rose.style.transform = 'scale(1)';
+                }, 1500);
+            }, 50);
+        }
+    </script>
+</body>
+</html>
